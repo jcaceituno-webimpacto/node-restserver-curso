@@ -2,6 +2,7 @@ require('./config/config');
 
 const express = require('express');
 const mongoose=require('mongoose');
+const path=require('path');
 
 const app = express();
 
@@ -14,6 +15,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 
+//Habilitar la carpeta public
+app.use(express.static(path.resolve('../07-restserver/public')));
+
+
+//Configuración global de rutas
 app.use(require('./routes/index'));
 
 ////////////////////////////////////////////////
